@@ -76,4 +76,4 @@ If there is no subgraph available, building a new one may be the easiest way to 
 
 Once you have found all necessary data-sources, it's time to combine them in a new data adapter!
 
-[2. Write the CryptoStats adapter](./2-write-adapter)
+[2. Write the CryptoStats adapter](./write-adapter)
