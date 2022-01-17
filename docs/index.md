@@ -6,32 +6,14 @@ slug: /
 
 # CryptoStats
 
-Let's discover **Docusaurus in less than 5 minutes**.
+_One neutral source of truth for crypto metrics. Used by everyone, managed by the community._
 
 ## Getting Started
 
-Get started by **creating a new site**.
+New to CryptoStats? [Read about what CryptoStats is and our vision](/what-is-cryptostats).
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+Want to add a protocol to CryptoStats? [Follow our tutorial on building adapters](/tutorial/build-a-fee-adapter).
 
-## Generate a new site
+Want to display CryptoStats data in your website or app? [Follow our tutorial on integrating CryptoStats data](/tutorial/use-cryptostats-data).
 
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-npm init docusaurus@latest my-website classic
-```
-
-## Start your site
-
-Run the development server:
-
-```shell
-cd my-website
-
-npx docusaurus start
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and displays your changes.
+Or check out the [reference docs for the CryptoStats SDK](/sdk)
