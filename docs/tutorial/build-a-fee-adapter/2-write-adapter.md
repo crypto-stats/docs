@@ -102,18 +102,84 @@ return feesInETH * ethPrice;
 
 ### Register the adapter
 
+Now, we need to make sure that our function is registered as a query, attached to the ENS subadapter.
+
+Towards the bottom of the file, find the `sdk.register(` call. This function will register a subadapter
+in the containing list, along with any queries and metadata.
+
+First, you can update the "id" field, we'll use "ens" for ours. The ID is used internally to identify
+sub-adapters.
+
+Next, make sure that the query is added to the "queries" object. All queries are registered by a query ID
+that defines what type of data is fetched by executing the query. You can see a full list of the standard
+queries on the [Standard Queries page](/building-adapters/standard-queries).
+
 ```
 sdk.register({
   id: 'ens',
   queries: {
     oneDayTotalFees: getFees,
   },
-})
+  metadata: {
+    ...
 ```
 
 ### Test the query
 
+Now it's time to make sure your queries actually work! On the right side of the editor, open up
+the "test" tab. You'll see the the oneDayTotalFees query for our ENS adapter, with a field to
+insert the date to query.
+
+Select a date, click "Run Query", and you should see the result outputted.
+
+If you need to debug your adapter, you might want to add a `console.log` line to your code. However,
+`console.log` is unavailable inside CryptoStats adapters. Instead use `sdk.log()`, and the output
+will be displayed in the "Console" panel at the bottom of the editor.
+
 ## Add Metadata
+
+In addition to queries, every CryptoStats adapter contains metadata about the protocols they represent.
+
+You can copy the fields below into your metadata object. The fields should be self-explanitory.
+
+```ts
+    ...
+  metadata: {
+    name: 'ENS',
+    protocolLaunch: '2020-08-07',
+    category: 'other',
+    description: 'ENS is a naming protocol for wallets, websites and more.',
+    feeDescription: 'Registration fees are paid to the DAO treasury.',
+    blockchain: 'Ethereum',
+    source: 'The Graph Protocol',
+    website: 'https://ens.domains',
+    events: [
+      {
+        date: '2021-11-09',
+        description: 'ENS DAO & token launched',
+      },
+    ],
+  },
+});
+```
+
+On the "preview" tab on the right side of the page, you should see all the fields inserted.
+
+### Upload an icon
+
+One field that we're missing from our metadata is an icon. To add an image to our adapter, we'll
+have to upload it to IPFS, and use a special function to include it in the adapter.
+
+First, download this ENS logo:
+
+![ENS logo](../../../static/img/ens.svg)
+
+_SVG logos are always preferred, due to their smaller size and scalability._
+
+Next, click the "Image Library" button in the bottom left of the editor page. In the popup, you'll
+be able to upload the image you just downloaded, and add it to the ENS adapter.
+
+Once adding it to your adapter, you should see the ENS icon in the Preview tab as well.
 
 ## Final code
 
@@ -179,3 +245,9 @@ export function setup(sdk: Context) {
 }
 
 ```
+
+## Next step: publish your adapter
+
+Now that your adapter is done, it's time to share it with the world!
+
+[3. Publish an adapter and submit it for review](./publish-submit-adapter)
