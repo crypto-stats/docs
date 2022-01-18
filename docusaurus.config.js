@@ -6,9 +6,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
+  title: 'CryptoStats Docs',
+  tagline: 'Documentation and guides for the CryptoStats data metrics protocol',
+  url: 'https://docs.cryptostats.community',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -41,13 +41,26 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      'docusaurus-plugin-plausible',
+      {
+        domain: 'docs.cryptostats.community',
+        customDomain: 'analytics.cryptostats.community',
+      },
+    ]
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'dark',
+      },
       navbar: {
         title: 'CryptoStats',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'CryptoStats',
           src: 'img/logo.svg',
         },
         items: [
@@ -104,7 +117,6 @@ const config = {
             ],
           },
         ],
-        // copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
