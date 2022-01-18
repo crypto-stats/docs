@@ -41,16 +41,6 @@ const config = {
     ],
   ],
 
-  plugins: [
-    [
-      'docusaurus-plugin-plausible',
-      {
-        domain: 'docs.cryptostats.community',
-        customDomain: 'analytics.cryptostats.community',
-      },
-    ]
-  ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -123,6 +113,13 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+
+  scripts: [
+    {
+      src: 'https://analytics.cryptostats.community/js/plausible.js',
+      defer: true,
+      'data-domain': 'docs.cryptostats.community',
+    }],
 };
 
 module.exports = config;
